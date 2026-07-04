@@ -6,7 +6,7 @@
 <title>505 — Miniserie</title>
 <meta name="description" content="505: una miniserie de suspenso dramático. Dos versiones, una noche, ninguna verdad completa.">
 
-<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="icon" type="image/png" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,22 +17,24 @@
 <!-- Grain overlay -->
 <div class="grain"></div>
 
-<!-- Ambient recorder readout -->
-<div class="rec-badge" aria-hidden="true">
-  <span class="rec-dot"></span>
-  <span class="rec-label">GRABANDO</span>
-  <span class="rec-time" id="recTime">00:00:00</span>
-</div>
-
 <!-- NAV -->
 <header class="topnav" id="topnav">
-  <a href="#top" class="brand">
-    <img src="images/logo.png" alt="505" class="brand-logo">
-  </a>
+  <div class="brand-group">
+    <a href="#top" class="brand">
+      <img src="images/logo.png" alt="505" class="brand-logo">
+    </a>
+    <div class="rec-badge" aria-hidden="true">
+      <span class="rec-dot"></span>
+      <span class="rec-label">GRABANDO</span>
+      <span class="rec-time" id="recTime">00:00:00</span>
+    </div>
+  </div>
   <nav class="tabs" id="tabs">
     <a href="#sinopsis" class="tab" data-tab="sinopsis"><span class="tab-index">EXP. 01</span>SINOPSIS</a>
     <a href="#productores" class="tab" data-tab="productores"><span class="tab-index">EXP. 02</span>PRODUCTORES</a>
     <a href="#capitulos" class="tab" data-tab="capitulos"><span class="tab-index">EXP. 03</span>TEASERS Y CAPÍTULOS</a>
+    <a href="#juego" class="tab" data-tab="juego"><span class="tab-index">EXP. 04</span>JUEGO</a>
+    <a href="#enlaces" class="tab" data-tab="enlaces"><span class="tab-index">EXP. 05</span>ENLACES</a>
   </nav>
   <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -90,36 +92,49 @@
   </div>
 
   <div class="crew-grid">
-    <!-- Reemplaza estos datos con los nombres, roles y fotos reales del equipo de producción -->
+    <!-- Cada tarjeta busca su foto en images/productores/. Si el archivo no existe todavía,
+         se muestra el marcador "NN" automáticamente. El nombre se deja en blanco a propósito. -->
     <div class="crew-card">
-      <div class="crew-photo"><span>NN</span></div>
+      <div class="crew-photo">
+        <span class="crew-photo-fallback">NN</span>
+        <img class="crew-photo-img" src="images/IMG_1344.PNG" alt="" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+      </div>
       <div class="crew-info">
-        <p class="crew-name">Nombre Apellido</p>
         <p class="crew-role">Productor Ejecutivo</p>
+        <p class="crew-name"></p>
         <p class="crew-id">ID · 505-01</p>
       </div>
     </div>
     <div class="crew-card">
-      <div class="crew-photo"><span>NN</span></div>
+      <div class="crew-photo">
+        <span class="crew-photo-fallback">NN</span>
+        <img class="crew-photo-img" src="images/IMG_1345.PNG" alt="" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+      </div>
       <div class="crew-info">
-        <p class="crew-name">Nombre Apellido</p>
         <p class="crew-role">Directora</p>
+        <p class="crew-name"></p>
         <p class="crew-id">ID · 505-02</p>
       </div>
     </div>
     <div class="crew-card">
-      <div class="crew-photo"><span>NN</span></div>
+      <div class="crew-photo">
+        <span class="crew-photo-fallback">NN</span>
+        <img class="crew-photo-img" src="images/IMG_1346.PNG" alt="" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+      </div>
       <div class="crew-info">
-        <p class="crew-name">Nombre Apellido</p>
         <p class="crew-role">Guionista</p>
+        <p class="crew-name"></p>
         <p class="crew-id">ID · 505-03</p>
       </div>
     </div>
     <div class="crew-card">
-      <div class="crew-photo"><span>NN</span></div>
+      <div class="crew-photo">
+        <span class="crew-photo-fallback">NN</span>
+        <img class="crew-photo-img" src="images/IMG_1431.PNG" alt="" onload="this.classList.add('loaded')" onerror="this.style.display='none'">
+      </div>
       <div class="crew-info">
-        <p class="crew-name">Nombre Apellido</p>
         <p class="crew-role">Productor de Línea</p>
+        <p class="crew-name"></p>
         <p class="crew-id">ID · 505-04</p>
       </div>
     </div>
@@ -134,60 +149,65 @@
   </div>
 
   <div class="tapes-grid" id="tapesGrid">
-    <!-- Reemplaza data-video con la URL de embed real (YouTube/Vimeo) cuando esté disponible -->
-    <button class="tape-card" data-title="Teaser Oficial" data-tc="00:00:47" data-video="">
+    <!-- Reemplaza data-video con la URL de embed real (YouTube/Vimeo) cuando tengas un capítulo nuevo -->
+    <button class="tape-card" data-title="Teaser Oficial" data-tc="TEASER" data-video="https://www.youtube.com/embed/kYo6j5HCax0">
       <span class="tape-reel" aria-hidden="true"></span>
       <span class="tape-play">▶</span>
       <span class="tape-meta">
-        <span class="tape-tc">00:00:47</span>
+        <span class="tape-tc">TEASER</span>
         <span class="tape-title">Teaser Oficial</span>
       </span>
     </button>
 
-    <button class="tape-card" data-title="Capítulo 1 — La Llamada" data-tc="EP. 01" data-video="">
+    <button class="tape-card" data-title="Capítulo 1" data-tc="EP. 01" data-video="https://www.youtube.com/embed/hqK5-rL9k08">
       <span class="tape-reel" aria-hidden="true"></span>
       <span class="tape-play">▶</span>
       <span class="tape-meta">
         <span class="tape-tc">EP. 01</span>
-        <span class="tape-title">La Llamada</span>
+        <span class="tape-title">Primer Capítulo</span>
       </span>
     </button>
 
-    <button class="tape-card" data-title="Capítulo 2 — Dos Versiones" data-tc="EP. 02" data-video="">
+    <button class="tape-card locked" data-title="Próximo Capítulo" data-tc="EP. 02" data-video="">
       <span class="tape-reel" aria-hidden="true"></span>
-      <span class="tape-play">▶</span>
+      <span class="tape-play">🔒</span>
       <span class="tape-meta">
         <span class="tape-tc">EP. 02</span>
-        <span class="tape-title">Dos Versiones</span>
-      </span>
-    </button>
-
-    <button class="tape-card" data-title="Capítulo 3 — Lo Que Calló Lucas" data-tc="EP. 03" data-video="">
-      <span class="tape-reel" aria-hidden="true"></span>
-      <span class="tape-play">▶</span>
-      <span class="tape-meta">
-        <span class="tape-tc">EP. 03</span>
-        <span class="tape-title">Lo Que Calló Lucas</span>
-      </span>
-    </button>
-
-    <button class="tape-card locked" data-title="Capítulo 4 — Próximamente" data-tc="EP. 04" data-video="">
-      <span class="tape-reel" aria-hidden="true"></span>
-      <span class="tape-play">🔒</span>
-      <span class="tape-meta">
-        <span class="tape-tc">EP. 04</span>
         <span class="tape-title">Próximamente</span>
       </span>
     </button>
+  </div>
+</section>
 
-    <button class="tape-card locked" data-title="Capítulo 5 — Próximamente" data-tc="EP. 05" data-video="">
-      <span class="tape-reel" aria-hidden="true"></span>
-      <span class="tape-play">🔒</span>
-      <span class="tape-meta">
-        <span class="tape-tc">EP. 05</span>
-        <span class="tape-title">Próximamente</span>
-      </span>
-    </button>
+<!-- JUEGO -->
+<section class="links-section" id="juego">
+  <div class="section-head">
+    <p class="doc-eyebrow">EXPEDIENTE INTERACTIVO</p>
+    <h2 class="section-title">El Juego</h2>
+  </div>
+
+  <div class="links-card">
+    <p class="links-text">Ponte en el lugar de la investigación: analiza pistas, contrasta versiones y decide qué historia se sostiene en el juego oficial de “505”.</p>
+    <a class="links-btn" href="https://alberrt00m.github.io/ProyectoCrimen/" target="_blank" rel="noopener noreferrer">
+      <span>Jugar ahora</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ENLACES -->
+<section class="links-section" id="enlaces">
+  <div class="section-head">
+    <p class="doc-eyebrow">EXPEDIENTE ADICIONAL</p>
+    <h2 class="section-title">Enlaces</h2>
+  </div>
+
+  <div class="links-card">
+    <p class="links-text">Encuentra todas las cuentas y plataformas oficiales del proyecto “505” en un solo lugar.</p>
+    <a class="links-btn" href="https://linktr.ee/cincocerocinco?utm_source=linktree_profile_share&ltsid=d5c053fc-783a-4273-85cf-575fee83d0e0" target="_blank" rel="noopener noreferrer">
+      <span>Ver todos los enlaces</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4M11 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
+    </a>
   </div>
 </section>
 
@@ -195,6 +215,11 @@
   <img src="images/logo.png" alt="505" class="footer-logo">
   <p>© 2026 · Miniserie “505”. Todos los derechos reservados.</p>
 </footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 13V3M8 3L3 8M8 3L13 8" stroke="currentColor" stroke-width="1.6"/></svg>
+</button>
 
 <!-- MODAL -->
 <div class="modal" id="modal" aria-hidden="true">

@@ -41,24 +41,9 @@
   }
 
   /* -------------------------------------------------
-     3. Hide/show nav on scroll direction + active tab
+     3. Active tab highlighting (nav bar itself always stays visible)
   ------------------------------------------------- */
-  var topnav = document.getElementById("topnav");
-  var lastScrollY = window.scrollY;
-
-  window.addEventListener("scroll", function () {
-    var currentY = window.scrollY;
-    if (topnav) {
-      if (currentY > lastScrollY && currentY > 140) {
-        topnav.classList.add("hide");
-      } else {
-        topnav.classList.remove("hide");
-      }
-    }
-    lastScrollY = currentY;
-  }, { passive: true });
-
-  var sections = document.querySelectorAll("#sinopsis, #productores, #capitulos");
+  var sections = document.querySelectorAll("#sinopsis, #productores, #capitulos, #juego, #enlaces");
   var tabLinks = document.querySelectorAll(".tab");
 
   var navObserver = new IntersectionObserver(function (entries) {
@@ -77,7 +62,7 @@
   /* -------------------------------------------------
      4. Scroll reveal for doc sheet / crew cards / tapes
   ------------------------------------------------- */
-  var revealTargets = document.querySelectorAll(".doc-sheet, .crew-card, .tape-card");
+  var revealTargets = document.querySelectorAll(".doc-sheet, .crew-card, .tape-card, .links-card");
 
   var revealObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
@@ -162,5 +147,24 @@
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
   });
+
+  /* -------------------------------------------------
+     7. Back to top button
+  ------------------------------------------------- */
+  var backToTop = document.getElementById("backToTop");
+
+  if (backToTop) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 600) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
+      }
+    }, { passive: true });
+
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
 })();
